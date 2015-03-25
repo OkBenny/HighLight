@@ -10,11 +10,11 @@
       "tabs","activeTab","http://www.heyitsmartin.com/"
     
     ],
-    
+    "background": { "scripts": ["jQuery.js"] },
     "content_scripts": [
         {
         "matches": ["<all_urls>"],
-        "js": ["find.js"]
+        "js": ["jQuery.js", "find.js"]
         
     }
     ],

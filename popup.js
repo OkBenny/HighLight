@@ -1,4 +1,4 @@
-
+    
 
 var SearchText = ""; 
 
@@ -21,6 +21,7 @@ function grabSyns(sF) {
     if( SearchText != "" ) { 
         
         request = makeHttpObject(); 
+        //pls no ddos 
         var url = "http://heyitsmartin.com/uniSearch/return.php?word="+SearchText;
         //var url = "http://google.com";
         request.onerror = function() { 
@@ -67,11 +68,17 @@ function submitSearch() {
 }
 
 window.onload = function(){     
-    
+    document.getElementById("searchString").focus();
     //document.getElementById('searchButton').onclic = searchText;
 
    // alert(searchTest);
     var SearchButton = document.getElementById('searchButton'); 
     SearchButton.addEventListener("click", submitSearch );
-                                     
+    
+    
+    document.getElementById("searchString").addEventListener("keydown",function(key) {
+        if(key.keyCode == 13 ) { 
+            submitSearch();
+        }
+    });                                
 }
