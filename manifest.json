@@ -1,30 +1,30 @@
 {
     "manifest_version": 2,
-    
+
     "name": "in the search for swag",
     "description": "This extension searches for swag in your swag", 
-    
+
     "version": "1.0", 
-    
+
     "permissions":[
-      "tabs","activeTab","http://www.heyitsmartin.com/"
-    
+        "tabs","activeTab","http://www.heyitsmartin.com/"
+
     ],
     "background": { "scripts": ["jQuery.js"] },
     "content_scripts": [
         {
-        "matches": ["<all_urls>"],
-        "js": ["jQuery.js", "find.js"]
-        
-    }
+            "matches": ["<all_urls>"],
+            "css":["style.css"],
+            "js": ["jQuery.js", "find.js"]
+        }
     ],
-    
+
     "browser_action":{
-    
-    "default_popup": "popup.html" 
+
+        "default_popup": "popup.html" 
     }
-    
-    
-    
-    
- }
+
+
+
+
+}
