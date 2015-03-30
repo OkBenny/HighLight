@@ -53,7 +53,8 @@ jQuery.fn.removeHighlight = function() {
  return this.find("span.highlight").each(function() {
   this.parentNode.firstChild.nodeName;
   with (this.parentNode) {
-   replaceChild(this.firstChild, this);
+   //replaceChild(this.firstChild, this);
+      this.className='';
    normalize();
   }
  }).end();
