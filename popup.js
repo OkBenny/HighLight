@@ -46,7 +46,10 @@ function grabSyns(sF) {
             if(request.readyState==4 && request.status==200){ 
                 console.log(request.responseText);
                 div.textContent= 'highlighting...';
-                sF(request.responseText);
+               
+                var temp = request.response;
+                temp = SearchText.concat(','+temp);
+                sF(temp);
             }
         }
        try{
