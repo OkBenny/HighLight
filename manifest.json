@@ -1,8 +1,8 @@
 {
     "manifest_version": 2,
 
-    "name": "in the search for swag",
-    "description": "This extension searches for swag in your swag", 
+    "name": "INH",
+    "description": "Highlight the words you didn't know you were looking for", 
 
     "version": "1.0", 
 
@@ -18,6 +18,9 @@
             "js": ["jQuery.js", "find.js"]
         }
     ],
+    "icons":{ 
+        "128":  "icon128.png"
+    },
 
     "browser_action":{
 

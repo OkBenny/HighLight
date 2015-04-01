@@ -33,13 +33,19 @@ function grabSyns(sF) {
    SearchText = document.getElementById('searchString').value;
     
     if( SearchText != "" ) { 
-        
+        var prevSearch = window.prev; 
+        if(prevSearch == SearchText){
+            div.textContent='This word has been searched for already';
+            return;
+        }else{ 
+            window.prev = SearchText;
+        }
         request = makeHttpObject(); 
         //pls no ddos >_> 
         var url = "http://heyitsmartin.com/uniSearch/return.php?word="+SearchText;
         //var url = "http://google.com";
         request.onerror = function() { 
-                alert("Something died");
+                div.textContent = 'Request could not be sent';
             }
         request.onreadystatechange=function(){
             
@@ -57,7 +63,7 @@ function grabSyns(sF) {
             request.open("GET",url,true);
             request.send(); 
        }catch (e) {
-           alert("omg");
+            div.textContent = 'Request could not be sent';
         
        }
     } 
@@ -66,6 +72,10 @@ function grabSyns(sF) {
 }
 
 function setDivs(divs) { 
+    if(divs!=null ){
+       document.getElementById('loadDiv').textContent ='An error occured';
+        return;
+    }
     words = divs; 
     document.getElementById('loadDiv').textContent='';
 }
@@ -91,8 +101,12 @@ function startFind(returnString) {
 }
 
 function submitSearch() { 
-    var returnString = ""; 
-    returnString = grabSyns(startFind); 
+    try{
+        var returnString = ""; 
+        returnString = grabSyns(startFind); 
+    }catch (e) { 
+     div.textContent = 'An error occured';
+    }
 }
 
 function focusObj ( methodName,  object )  { 
